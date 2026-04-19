@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "8c8f6434-2534-4b42-9655-d9a280a6d0cd",
+    "name": "ApiCadastro - CRUD Pessoas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Collection para testar CRUD de pessoas (cpf e nome) na API Spring Boot com H2."
+  },
+  "item": [
+    {
+      "name": "POST - Criar pessoa",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Maria Silva\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pessoas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pessoas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET - Listar pessoas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pessoas",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pessoas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET - Buscar pessoa por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pessoas/{{id}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pessoas",
+            "{{id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT - Atualizar pessoa",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"cpf\": \"10987654321\",\n  \"nome\": \"Maria Souza\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/pessoas/{{id}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pessoas",
+            "{{id}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE - Remover pessoa",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/pessoas/{{id}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "pessoas",
+            "{{id}}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "id",
+      "value": "1"
+    }
+  ]
+}
