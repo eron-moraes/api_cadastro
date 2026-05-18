@@ -3,7 +3,7 @@
     "_postman_id": "8c8f6434-2534-4b42-9655-d9a280a6d0cd",
     "name": "ApiCadastro - CRUD Pessoas",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Collection para testar CRUD de pessoas (cpf e nome) na API Spring Boot com H2."
+    "description": "Collection para testar CRUD de pessoas (cpf, nome e idade) na API Spring Boot com H2."
   },
   "item": [
     {
@@ -18,7 +18,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Maria Silva\"\n}"
+          "raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Maria Silva\",\n  \"idade\": 30\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/pessoas",
@@ -79,7 +79,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"cpf\": \"10987654321\",\n  \"nome\": \"Maria Souza\"\n}"
+          "raw": "{\n  \"cpf\": \"10987654321\",\n  \"nome\": \"Maria Souza\",\n  \"idade\": 31\n}"
         },
         "url": {
           "raw": "{{baseUrl}}/pessoas/{{id}}",

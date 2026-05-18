@@ -60,6 +60,7 @@ public class PessoaController {
 
         pessoaExistente.setCpf(pessoaAtualizada.getCpf());
         pessoaExistente.setNome(pessoaAtualizada.getNome());
+        pessoaExistente.setIdade(pessoaAtualizada.getIdade());
         return pessoaRepository.save(pessoaExistente);
     }
 

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(mvn -version)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 8080 -State Listen | Select-Object -ExpandProperty OwningProcess | ForEach-Object { Get-Process -Id $_ })",
+      "PowerShell(Stop-Process -Id 12180 -Force)"
+    ]
+  }
+}

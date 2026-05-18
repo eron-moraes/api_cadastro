@@ -1,0 +1,6 @@
+com\exemplo\apicadastro\exception\ApiError.class
+com\exemplo\apicadastro\controller\PessoaController.class
+com\exemplo\apicadastro\model\Pessoa.class
+com\exemplo\apicadastro\repository\PessoaRepository.class
+com\exemplo\apicadastro\ApiCadastroApplication.class
+com\exemplo\apicadastro\exception\GlobalExceptionHandler.class
