@@ -1,0 +1,31 @@
+# Maven
+target/
+pom.xml.versionsBackup
+release.properties
+
+# Logs
+*.log
+
+# IDE - IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - Eclipse / STS
+.classpath
+.project
+.settings/
+bin/
+.factorypath
+
+# IDE - NetBeans
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
