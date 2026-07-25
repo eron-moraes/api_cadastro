@@ -26,6 +26,10 @@ nbbuild/
 nbdist/
 .nb-gradle/
 
+# Ferramentas de IA
+.claude/
+.cursor/
+
 # Sistema operacional
 .DS_Store
 Thumbs.db
