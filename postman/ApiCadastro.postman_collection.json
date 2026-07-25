@@ -3,114 +3,497 @@
     "_postman_id": "8c8f6434-2534-4b42-9655-d9a280a6d0cd",
     "name": "ApiCadastro - CRUD Pessoas",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Collection para testar CRUD de pessoas (cpf, nome e idade) na API Spring Boot com H2."
+    "description": "Collection para testar o CRUD de pessoas (cpf, nome e idade) na API Spring Boot com H2.\n\nOs CPFs usados nos exemplos sao validos pelo digito verificador e seguem o formato aceito pela API: 11 digitos, sem pontuacao.\n\nOrdem sugerida: rode os POSTs da pasta \"CRUD\" primeiro. O primeiro POST guarda o id retornado na variavel {{id}}, usada pelos requests seguintes."
   },
   "item": [
     {
-      "name": "POST - Criar pessoa",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"cpf\": \"12345678901\",\n  \"nome\": \"Maria Silva\",\n  \"idade\": 30\n}"
+      "name": "CRUD",
+      "item": [
+        {
+          "name": "POST - Criar pessoa (Maria)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "var pessoa = pm.response.json();",
+                  "pm.collectionVariables.set(\"id\", pessoa.id);",
+                  "console.log(\"id salvo em {{id}}: \" + pessoa.id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"66048764707\",\n  \"nome\": \"Maria Silva\",\n  \"idade\": 30\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            },
+            "description": "Cadastra a primeira pessoa e guarda o id retornado na variavel de collection {{id}}."
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{baseUrl}}/pessoas",
-          "host": [
-            "{{baseUrl}}"
+        {
+          "name": "POST - Criar pessoa (Joao)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ]
+              }
+            }
           ],
-          "path": [
-            "pessoas"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "GET - Listar pessoas",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/pessoas",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "pessoas"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "GET - Buscar pessoa por id",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/pessoas/{{id}}",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "pessoas",
-            "{{id}}"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "PUT - Atualizar pessoa",
-      "request": {
-        "method": "PUT",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"cpf\": \"10987654321\",\n  \"nome\": \"Maria Souza\",\n  \"idade\": 31\n}"
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"29141777638\",\n  \"nome\": \"Joao Pereira\",\n  \"idade\": 45\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
         },
-        "url": {
-          "raw": "{{baseUrl}}/pessoas/{{id}}",
-          "host": [
-            "{{baseUrl}}"
+        {
+          "name": "POST - Criar pessoa (Ana)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ]
+              }
+            }
           ],
-          "path": [
-            "pessoas",
-            "{{id}}"
-          ]
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"01152449303\",\n  \"nome\": \"Ana Beatriz Costa\",\n  \"idade\": 22\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Listar pessoas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"retorna uma lista\", function () {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Buscar pessoa por id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT - Atualizar pessoa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"66048764707\",\n  \"nome\": \"Maria Silva Souza\",\n  \"idade\": 31\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{id}}"
+              ]
+            },
+            "description": "Atualiza a pessoa mantendo o proprio CPF - deve passar sem conflito."
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE - Remover pessoa",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 204\", function () {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{id}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     },
     {
-      "name": "DELETE - Remover pessoa",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/pessoas/{{id}}",
-          "host": [
-            "{{baseUrl}}"
+      "name": "Casos de erro",
+      "item": [
+        {
+          "name": "POST - CPF duplicado (409)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 409\", function () {",
+                  "    pm.response.to.have.status(409);",
+                  "});"
+                ]
+              }
+            }
           ],
-          "path": [
-            "pessoas",
-            "{{id}}"
-          ]
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"29141777638\",\n  \"nome\": \"Outro Joao\",\n  \"idade\": 50\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            },
+            "description": "Usa o mesmo CPF do request \"POST - Criar pessoa (Joao)\". Rode aquele antes."
+          },
+          "response": []
+        },
+        {
+          "name": "POST - CPF com mascara (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"398.259.791-94\",\n  \"nome\": \"Carlos Mendes\",\n  \"idade\": 38\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            },
+            "description": "A API aceita apenas 11 digitos numericos, sem pontuacao."
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Sem idade (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"34167211017\",\n  \"nome\": \"Carlos Mendes\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Idade acima do limite (400)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"94580730224\",\n  \"nome\": \"Matusalem\",\n  \"idade\": 200\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Id inexistente (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/99999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "99999"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE - Id inexistente (404)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"status 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/99999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "99999"
+              ]
+            }
+          },
+          "response": []
         }
-      },
-      "response": []
+      ]
     }
   ],
   "variable": [
